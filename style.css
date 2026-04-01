@@ -446,29 +446,58 @@ hr {
     100% { transform: translate(-50%, -50%) scale(1); }
 }
 
-#hack-screen {
+#bsod-screen {
     width: 100vw;
     height: 100vh;
-    background: #000;
-    color: #0f0;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 30px;
-    box-sizing: border-box;
+    background: #0078d7;
+    color: #fff;
+    font-family: 'Segoe UI', system-ui, sans-serif;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    cursor: none;
+    user-select: none;
+    overflow: hidden;
 }
 
-#hack-text {
-    width: 100%;
+.bsod-content {
+    max-width: 800px;
+    width: 80%;
+    margin-top: -10vh;
 }
 
-.hack-line {
-    margin: 8px 0;
-    white-space: pre-wrap;
-    word-break: break-all;
-    text-shadow: 0 0 5px #0f0;
+.bsod-face {
+    font-size: 130px;
+    margin-bottom: 20px;
+}
+
+.bsod-text {
+    font-size: 28px;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+.bsod-percentage {
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+.bsod-details {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    align-items: center;
+}
+
+.bsod-qr {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    padding: 6px; /* give it a white border frame typical for QR codes */
+    border-radius: 4px;
+}
+
+.bsod-info {
+    font-size: 15px;
+    line-height: 1.5;
 }

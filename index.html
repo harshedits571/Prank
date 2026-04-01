@@ -342,9 +342,23 @@
     <!-- The Prank Video Overlap -->
     <div id="prank-container" style="display: none;">
         
-        <!-- Phase 1: Scary Hack Terminal -->
-        <div id="hack-screen" style="display: none;">
-            <div id="hack-text"></div>
+        <!-- Phase 1: Fake Blue Screen of Death -->
+        <div id="bsod-screen" style="display: none;">
+            <div class="bsod-content">
+                <div class="bsod-face">:(</div>
+                <div class="bsod-text">Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.</div>
+                <div class="bsod-percentage"><span id="bsod-progress">0</span>% complete</div>
+                <div class="bsod-details">
+                    <div class="bsod-qr">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.youtube.com/watch?v=dQw4w9WgXcQ&size=100x100" alt="QR" style="width:100%; height:100%; display:block;">
+                    </div>
+                    <div class="bsod-info">
+                        For more information about this issue and possible fixes, visit https://www.windows.com/stopcode<br><br>
+                        If you call a support person, give them this info:<br>
+                        Stop code: CRITICAL_PROCESS_DIED
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Phase 2: Video -->

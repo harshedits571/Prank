@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const prankContainer = document.getElementById('prank-container');
     const prankVideo = document.getElementById('prank-video');
 
-    const hackScreen = document.getElementById('hack-screen');
+    const bsodScreen = document.getElementById('bsod-screen');
     const videoWrapper = document.getElementById('video-wrapper');
-    const hackText = document.getElementById('hack-text');
+    const bsodProgress = document.getElementById('bsod-progress');
 
     function showCheckout(e) {
         e.preventDefault();
@@ -48,48 +48,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         
-        // Start phase 1: The Hack
-        hackScreen.style.display = 'flex';
+        // Start phase 1: The Fake BSOD
+        bsodScreen.style.display = 'flex';
         videoWrapper.style.display = 'none';
-        hackText.innerHTML = '';
         
-        const lines = [
-            "INITIALIZING SECURITY BYPASS PROTOCOL...",
-            "ACCESSING ROOT DIRECTORY... [SUCCESS]",
-            "DOWNLOADING BROWSER HISTORY... [IN PROGRESS]",
-            "EXTRACTING SAVED PASSWORDS... [SUCCESS]",
-            "ACCESSING WEBCAM... [GRANTED]",
-            "UPLOADING DATA TO REMOTE SERVER...",
-            "ENCRYPTING LOCAL FILES... [SYSTEM32 TARGETED]",
-            "CRITICAL WARNING: THREAT DETECTED!!!",
-            "COMMENCING PAYLOAD..."
-        ];
-
-        let lineIndex = 0;
+        let progress = 0;
+        bsodProgress.innerText = progress;
         
-        // Rapidly scroll green text
-        const hackInterval = setInterval(() => {
-            if (lineIndex < lines.length) {
-                const p = document.createElement('div');
-                p.className = 'hack-line';
-                p.innerText = "> " + lines[lineIndex];
-                hackText.appendChild(p);
-                lineIndex++;
-            } else {
-                clearInterval(hackInterval);
+        const tick = setInterval(() => {
+            // increment progress randomly
+            progress += Math.floor(Math.random() * 18) + 4;
+            if (progress >= 100) {
+                progress = 100;
+                bsodProgress.innerText = progress;
+                clearInterval(tick);
                 
-                // Pause for dramatic effect, then hit the video
+                // Pause at 100% for a split second, then hit the video
                 setTimeout(() => {
-                    hackScreen.style.display = 'none';
+                    bsodScreen.style.display = 'none';
                     videoWrapper.style.display = 'block';
                     
                     // Play the video
                     prankVideo.play().catch(err => {
                         console.log(`Error attempting to play video: ${err.message}`);
                     });
-                }, 800);
+                }, 600);
+            } else {
+                bsodProgress.innerText = progress;
             }
-        }, 350);
+        }, 400);
     }
 
     // Go to checkout from main page
